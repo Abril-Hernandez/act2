@@ -34,6 +34,14 @@ def move():
     head = snake[-1].copy()
     head.move(aim)
 
+    if randrange(2):
+        food.x += randrange(-1, 2, 2) * 10
+    else:
+        food.y += randrange(-1, 2, 2) * 10
+
+    food.x = max(-190, min(180, food.x))
+    food.y = max(-190, min(180, food.y))
+
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
